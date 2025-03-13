@@ -21,7 +21,7 @@ A web-based NMEA2000 monitoring system for Raspberry Pi with PiCAN2 board.
 2. Download and extract the package:
 ```bash
 cd ~
-git clone [https://github.com/Ross-ump/nmea2000-monitor.git]
+git clone https://github.com/Ross-ump/nmea2000-monitor.git
 cd nmea2000-monitor
 ```
 
@@ -46,7 +46,7 @@ http://[raspberry-pi-ip]:5000
 ### CAN Interface Setup
 If you need to manually configure the CAN interface:
 
-1. Edit `/boot/config.txt`:
+1. Edit `/boot/firmware/config.txt`:
 ```
 dtparam=spi=on
 dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25
