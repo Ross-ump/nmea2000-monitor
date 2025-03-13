@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NMEA2000 Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>NMEA2000 Monitor</h1>
+
+        <div class="sensors-grid">
+            <!-- Engine Parameters -->
+            <div class="parameter-box">
+                <h2>Engine Parameters</h2>
+                <div class="value-display">
+                    <div class="param-row">
+                        <label>RPM:</label>
+                        <span id="rpm-value">0</span> RPM
+                    </div>
+                    <div class="param-row">
+                        <label>Engine Speed:</label>
+                        <span id="engine-speed-value">0</span>%
+                    </div>
+                    <div class="param-row">
+                        <label>Boost Pressure:</label>
+                        <span id="boost-pressure-value">0</span> kPa
+                    </div>
+                    <div class="param-row">
+                        <label>Tilt/Trim:</label>
+                        <span id="tilt-trim-value">0</span>%
+                    </div>
+                </div>
+                <input type="range" id="rpm-slider" min="0" max="4000" value="0">
+            </div>
+
+            <!-- Temperature Sensors -->
+            <div class="parameter-box">
+                <h2>Temperature Sensors</h2>
+                <div id="temperature-sensors">
+                    <div class="sensor-instance">
+                        <h3>Engine Room</h3>
+                        <div class="value-display">
+                            <span id="temp-value-0">0.0</span>°C
+                        </div>
+                        <input type="range" class="temp-slider" data-instance="0" data-source="3" min="0" max="100" value="0">
+                    </div>
+                    <div class="sensor-instance">
+                        <h3>Outside</h3>
+                        <div class="value-display">
+                            <span id="temp-value-1">0.0</span>°C
+                        </div>
+                        <input type="range" class="temp-slider" data-instance="1" data-source="1" min="0" max="100" value="0">
+                    </div>
+                    <div class="sensor-instance">
+                        <h3>Main Cabin</h3>
+                        <div class="value-display">
+                            <span id="temp-value-2">0.0</span>°C
+                        </div>
+                        <input type="range" class="temp-slider" data-instance="2" data-source="4" min="0" max="100" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Environmental Parameters -->
+            <div class="parameter-box">
+                <h2>Environmental Parameters</h2>
+                <div class="sensor-instance">
+                    <h3>Humidity</h3>
+                    <div class="value-display">
+                        <span id="humidity-value">0</span>%
+                    </div>
+                    <input type="range" id="humidity-slider" min="0" max="100" value="0">
+                </div>
+                <div class="sensor-instance">
+                    <h3>Pressure</h3>
+                    <div class="value-display">
+                        <span id="pressure-value">1013</span> hPa
+                    </div>
+                    <input type="range" id="pressure-slider" min="900" max="1100" value="1013">
+                </div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <canvas id="dataChart"></canvas>
+        </div>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
