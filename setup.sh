@@ -12,14 +12,14 @@ sudo apt-get install -y can-utils nodejs npm
 
 # Enable SPI and CAN in boot config
 echo "Configuring boot settings..."
-if ! grep -q "dtparam=spi=on" /boot/config.txt; then
-    echo "dtparam=spi=on" | sudo tee -a /boot/config.txt
+if ! grep -q "dtparam=spi=on" /boot/firmware/config.txt; then
+    echo "dtparam=spi=on" | sudo tee -a /boot/firmware/config.txt
 fi
-if ! grep -q "dtoverlay=mcp2515-can0" /boot/config.txt; then
-    echo "dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25" | sudo tee -a /boot/config.txt
+if ! grep -q "dtoverlay=mcp2515-can0" /boot/firmware/config.txt; then
+    echo "dtoverlay=mcp2515-can0,oscillator=16000000,interrupt=25" | sudo tee -a /boot/firmware/config.txt
 fi
-if ! grep -q "dtoverlay=spi-bcm2835-overlay" /boot/config.txt; then
-    echo "dtoverlay=spi-bcm2835-overlay" | sudo tee -a /boot/config.txt
+if ! grep -q "dtoverlay=spi-bcm2835-overlay" /boot/firmware/config.txt; then
+    echo "dtoverlay=spi-bcm2835-overlay" | sudo tee -a /boot/firmware/config.txt
 fi
 
 # Create directory for the application
