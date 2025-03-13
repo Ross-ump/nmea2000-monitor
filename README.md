@@ -21,7 +21,7 @@ A web-based NMEA2000 monitoring system for Raspberry Pi with PiCAN2 board.
 2. Download and extract the package:
 ```bash
 cd ~
-git clone [your-repository-url]
+git clone [https://github.com/Ross-ump/nmea2000-monitor.git]
 cd nmea2000-monitor
 ```
 
